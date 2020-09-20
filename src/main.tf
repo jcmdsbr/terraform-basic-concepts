@@ -9,19 +9,16 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1"
-  shared_credentials_file = "$HOME/.aws/credentials"
-  profile = "terraform"
+  region = var.aws_region
+  shared_credentials_file = var.aws_credentials_file
+  profile = var.aws_profile
 }
 
 # Create a private s3 bucket
 resource "aws_s3_bucket" "mybucket" {
   bucket = "my-first-resource-created-by-tf-fd2300ce-87a9-44f8-b71a"
   acl    = "private"
-  tags = {
-    Name        = "My First Resource Created by Terraforms"
-    Environment = "Dev"
-  }
+  tags = var.my_bucket_tags
 }
 
 # Create a object in private s3 bucket
