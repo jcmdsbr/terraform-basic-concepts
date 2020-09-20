@@ -29,4 +29,13 @@ resource "aws_s3_bucket_object" "object" {
   bucket = aws_s3_bucket.mybucket.id
   key    = "helloworld.txt"
   source = "docs/helloworld.txt"
+  etag = filemd5("docs/helloworld.txt")
+}
+
+output "bucket" {
+    value = aws_s3_bucket.mybucket.id
+}
+
+output "etag" {
+    value = aws_s3_bucket_object.object.etag
 }
