@@ -13,6 +13,6 @@ resource "aws_s3_bucket_object" "obj" {
   count  = var.aws_bucket_create_object ? 1 : 0
   bucket = aws_s3_bucket.this.id
   key    = "helloworld.txt"
-  source = "/home/jcmds/workspaces/terraform-learning/docs/helloworld.txt"
-  etag   = filemd5("/home/jcmds/workspaces/terraform-learning/docs/helloworld.txt")
+  source = "/mnt/c/workspaces/github/terraform-learning/docs/helloworld.txt"
+  etag   = filemd5("/mnt/c/workspaces/github/terraform-learning/docs/helloworld.txt")
 }

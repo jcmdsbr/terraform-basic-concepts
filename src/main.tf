@@ -5,6 +5,13 @@ terraform {
       version = "~> 3.0"
     }
   }
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "jcmds"
+    workspaces {
+      name = "terraform-learning"
+    }
+  }
 }
 
 provider "aws" {
