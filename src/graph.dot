@@ -1,0 +1,45 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.bucket.aws_s3_bucket.this (expand)" [label = "module.bucket.aws_s3_bucket.this", shape = "box"]
+		"[root] module.bucket.aws_s3_bucket_object.obj (expand)" [label = "module.bucket.aws_s3_bucket_object.obj", shape = "box"]
+		"[root] module.bucket.random_id.bucket (expand)" [label = "module.bucket.random_id.bucket", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"]" [label = "provider[\"registry.terraform.io/hashicorp/random\"]", shape = "diamond"]
+		"[root] var.aws_credentials_file" [label = "var.aws_credentials_file", shape = "note"]
+		"[root] var.aws_profile" [label = "var.aws_profile", shape = "note"]
+		"[root] var.aws_region" [label = "var.aws_region", shape = "note"]
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.bucket (close)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.bucket (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.etag (expand)"
+		"[root] module.bucket (close)" -> "[root] module.bucket.output.bucket_name (expand)"
+		"[root] module.bucket (close)" -> "[root] module.bucket.output.object_etag (expand)"
+		"[root] module.bucket.aws_s3_bucket.this (expand)" -> "[root] module.bucket.random_id.bucket (expand)"
+		"[root] module.bucket.aws_s3_bucket.this (expand)" -> "[root] module.bucket.var.aws_bucket_acl (expand)"
+		"[root] module.bucket.aws_s3_bucket.this (expand)" -> "[root] module.bucket.var.aws_bucket_name (expand)"
+		"[root] module.bucket.aws_s3_bucket.this (expand)" -> "[root] module.bucket.var.aws_bucket_tags (expand)"
+		"[root] module.bucket.aws_s3_bucket.this (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.bucket.aws_s3_bucket_object.obj (expand)" -> "[root] module.bucket.aws_s3_bucket.this (expand)"
+		"[root] module.bucket.aws_s3_bucket_object.obj (expand)" -> "[root] module.bucket.var.aws_bucket_create_object (expand)"
+		"[root] module.bucket.output.bucket_name (expand)" -> "[root] module.bucket.aws_s3_bucket.this (expand)"
+		"[root] module.bucket.output.object_etag (expand)" -> "[root] module.bucket.aws_s3_bucket_object.obj (expand)"
+		"[root] module.bucket.random_id.bucket (expand)" -> "[root] module.bucket (expand)"
+		"[root] module.bucket.random_id.bucket (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"]"
+		"[root] module.bucket.var.aws_bucket_acl (expand)" -> "[root] module.bucket (expand)"
+		"[root] module.bucket.var.aws_bucket_create_object (expand)" -> "[root] module.bucket (expand)"
+		"[root] module.bucket.var.aws_bucket_name (expand)" -> "[root] module.bucket (expand)"
+		"[root] module.bucket.var.aws_bucket_tags (expand)" -> "[root] module.bucket (expand)"
+		"[root] output.bucket (expand)" -> "[root] module.bucket.output.bucket_name (expand)"
+		"[root] output.etag (expand)" -> "[root] module.bucket.output.object_etag (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.bucket.aws_s3_bucket_object.obj (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.aws_credentials_file"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.aws_profile"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.aws_region"
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)" -> "[root] module.bucket.random_id.bucket (expand)"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)"
+	}
+}
+
