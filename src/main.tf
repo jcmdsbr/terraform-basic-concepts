@@ -18,3 +18,7 @@ module "bucket" {
   aws_bucket_name          = "my-bucket"
   aws_bucket_create_object = true
 }
+
+module "ec2" {
+  source = "./modules/ec2"
+}
